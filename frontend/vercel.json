@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "https://todobackend-kqzl.onrender.com/api/$1" }
+    ]
+  }
+  
