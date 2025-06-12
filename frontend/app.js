@@ -6,14 +6,14 @@ app.controller('TodoController', function ($scope, $http) {
   $scope.newTodo = "";
 
   $scope.loadTodos = function () {
-    $http.get('http://localhost:3000/api/todos').then(res => {
+    $http.get('https://todobackend-kqzl.onrender.com/api/todos').then(res => {
       $scope.todos = res.data;
     });
   };
 
   $scope.addTodo = function () {
     if (!$scope.newTodo) return;
-    $http.post('http://localhost:3000/api/todos', { title: $scope.newTodo }).then(() => {
+    $http.post('https://todobackend-kqzl.onrender.com/api/todos', { title: $scope.newTodo }).then(() => {
       $scope.newTodo = "";
       $scope.loadTodos();
     });
@@ -22,7 +22,7 @@ app.controller('TodoController', function ($scope, $http) {
   $scope.toggleTodo = function (todo) {
     const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const completed = !todo.completed;
-    $http.put(`http://localhost:3000/api/todos/${todo.id}`, {
+    $http.put(`https://todobackend-kqzl.onrender.com/api/todos/${todo.id}`, {
       completed: completed,
       completed_at: completed ? now : null
     }).then(() => {
@@ -32,7 +32,7 @@ app.controller('TodoController', function ($scope, $http) {
   };
 
   $scope.deleteTodo = function (id) {
-    $http.delete(`http://localhost:3000/api/todos/${id}`).then(() => {
+    $http.delete(`https://todobackend-kqzl.onrender.com/api/todos/${id}`).then(() => {
       $scope.loadTodos();
     });
   };
